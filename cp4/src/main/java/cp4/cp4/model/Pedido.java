@@ -17,6 +17,15 @@ public class Pedido {
         this.itens = new ArrayList<>();
     }
 
+    public Pedido(String id, StatusPedido status, List<Item> itens) {
+        this.id = (id == null || id.isEmpty()) ? UUID.randomUUID().toString().substring(0, 8) : id;
+        this.status = (status == null) ? StatusPedido.INICIADO : status;
+        this.itens = new ArrayList<>();
+        if (itens != null) {
+            this.itens.addAll(itens);
+        }
+    }
+
 
 
     public void adicionarItem(Item item) {
